@@ -1,0 +1,9 @@
+!git clone https://github.com/ultralytics/yolov5  # clone
+%cd yolov5
+%pip install -qr requirements.txt  
+
+!unzip /content/custom.zip -d /content/
+
+!python train.py --img 640 --batch 1 --epochs 100 --data /content/yolov5/data/custom_dt.yaml --weights yolov5s.pt --cache
+
+!python detect.py --weights /content/yolov5/runs/train/exp2/weights/best.pt --img 640 --conf 0.25 --source /content/test3.jpg
